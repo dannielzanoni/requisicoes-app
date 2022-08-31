@@ -14,12 +14,15 @@ import { environment } from 'src/environments/environment';
 import { LoginComponent } from './auth/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PainelComponent } from './painel/painel.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { DepartamentoModule } from './departamentos/departamento.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PainelComponent
+    PainelComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,9 @@ import { PainelComponent } from './painel/painel.component';
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+
+    DepartamentoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
