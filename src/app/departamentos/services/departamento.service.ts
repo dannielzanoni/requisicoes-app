@@ -26,6 +26,15 @@ export class DepartamentoService {
     this.registros.doc(res.id).set(registro);
   }
 
+  public async editar(registro: Departamento): Promise<void>{
+    return this.registros.doc(registro.id).set(registro);
+  }
+
+  public excluir(registro: Departamento): Promise<void>{
+    return this.registros.doc(registro.id).delete();
+  }
+
+
   public selecionarTodos(): Observable<Departamento[]>{
     return this.registros.valueChanges();
   }

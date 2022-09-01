@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
+
     <div class="col-12 col-md-10 col-lg-9 mx-auto">
         <div class="text-center text-md-start">
           <h1 class="fw-bold text-primary">Departamentos</h1>
         </div>
 
-        <div class="d-grid gap-2 d-md-block mt-5">
+        <div class="d-grid gap-2 d-md-block mt-4">
           <button
-          (click)="gravar(modal)"
+            (click)="gravar(modal)"
             type="button"
             class="btn btn-primary me-md-1 col-md-2">
             <i class="pi pi-user-plus me-2"></i>Novo
@@ -33,17 +34,20 @@
               <tr *ngFor="let departamento of (departamentos$ | async)">
                 <td>{{ departamento.nome }}</td>
                 <td>{{ departamento.telefone }}</td>
-                <td class="d-grid d-md-block"></td>
+                <td class="d-grid d-md-block">
                 <button
+                    (click)="gravar(modal, departamento)"
                     type="button"
                     class="btn btn-primary me-0 me-md-1 mb-1 mb-md-auto">
                     <i class="pi pi-user-edit"></i>
                   </button>
                   <button
+                    (click)="excluir(departamento)"
                     type="button"
                     class="btn btn-outline-danger">
                     <i class="pi pi-trash"></i>
                   </button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -57,7 +61,7 @@
 
 <ng-template #modal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Cadastrar novo Departamento</h4>
+    <h4 class="modal-title" id="modal-basic-title">{{tituloModal}} novo Departamento</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('fechar')"></button>
   </div>
     <form [formGroup]="form" (ngSubmit)="modal.close('gravar')">
