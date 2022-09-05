@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PainelComponent } from './painel/painel.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DepartamentoModule } from './departamentos/departamento.module';
+import { EquipamentoModule } from './equipamentos/equipamento.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DepartamentoModule } from './departamentos/departamento.module';
     AngularFireAuthModule,
     AngularFirestoreModule,
 
-    DepartamentoModule
+    DepartamentoModule,
+    EquipamentoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
