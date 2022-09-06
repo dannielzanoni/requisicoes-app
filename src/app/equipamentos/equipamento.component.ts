@@ -1,6 +1,9 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ReCaptchaEnterpriseProvider } from 'firebase/app-check';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { Equipamento } from './models/equipamento.model';
 import { EquipamentoService } from './services/equipamento.service';
@@ -16,7 +19,8 @@ export class EquipamentoComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private modalService: NgbModal,
-    private equipamentoService: EquipamentoService
+    private equipamentoService: EquipamentoService,
+    private toastrService: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -53,14 +57,18 @@ export class EquipamentoComponent implements OnInit {
       else
         await this.equipamentoService.editar(this.form.value);
 
-      console.log('O equipamento foi salvo com sucesso');
-    }catch(_error){
+      this.toastrService.success('O equipamento foi salvo com sucesso!', "Cadastro de Equipamentos");
+    }catch(error){
+      if(error != "fechar" && error != "0" && error != "1")
+      this.toastrService.error("Houve um erro ao salvar o equipamento. Tente Novamente.", "Cadastro de Equipamentos");
     }
   }
 
   public async excluir(equipamento: Equipamento){
     try{
       await this.equipamentoService.excluir(equipamento);
+
+      this.toastrService.success('O equipamento foi excluído com sucesso!', "Cadastro de Equipamentos");
     }catch(error){
       console.log(error);
     }
