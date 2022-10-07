@@ -92,6 +92,9 @@
             class="form-control"
             type="text"
             placeholder="R$ 0,00">
+            <!-- <div class="invalid-tooltip" *ngIf="precoAquisicao?.touched && precoAquisicao?.invalid">
+              <span *ngIf="precoAquisicao?.error?.['required']">O preço de aquisição precisa ser preenchido.</span>
+            </div> -->
         </div>
 
         <div class="form group mb-3">
@@ -99,6 +102,10 @@
           <input formControlName="dataFabricacao"
             class="form-control"
             type="date">
+            <!-- <div class="invalid-tooltip" *ngIf="dataFabricacao?.touched && dataFabricacao?.invalid">
+              <span *ngIf="dataFabricacao?.error?.['required']">A data de fabricação precisa ser preenchida.</span>
+              <span *ngIf="dataFabricacao?.error?.['dataFutura']">A data de fabricação não pode exceder hoje.</span>
+            </div> -->
         </div>
 
       </div>

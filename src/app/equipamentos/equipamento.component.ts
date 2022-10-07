@@ -1,10 +1,11 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { dataFuturaValidator } from '../shared/validators/data-futura.validators';
 import { Equipamento } from './models/equipamento.model';
 import { EquipamentoService } from './services/equipamento.service';
 
@@ -28,8 +29,8 @@ export class EquipamentoComponent implements OnInit {
       id: new FormControl(""),
       numeroSerie: new FormControl(""),
       nome: new FormControl(""),
-      precoAquisicao: new FormControl(""),
-      dataFabricacao: new FormControl(""),
+      precoAquisicao: new FormControl("", [Validators.required, Validators.minLength(3)]),
+      dataFabricacao: new FormControl("", [Validators.required, dataFuturaValidator()]),
     });
 
     this.equipamentos$ = this.equipamentoService.selecionarTodos();
@@ -72,7 +73,5 @@ export class EquipamentoComponent implements OnInit {
     }catch(error){
       console.log(error);
     }
-
   }
-
 }
