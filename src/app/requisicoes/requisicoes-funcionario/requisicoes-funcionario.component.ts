@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, AbstractControl } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subscription } from 'rxjs';
@@ -28,6 +29,7 @@ export class RequisicoesFuncionarioComponent implements OnInit, OnDestroy {
   public form: FormGroup;
 
   constructor(
+    titulo: Title,
     private authService: AuthenticationService,
     private requisicaoService: RequisicaoService,
     private equipamentoService: EquipamentoService,
@@ -36,7 +38,9 @@ export class RequisicoesFuncionarioComponent implements OnInit, OnDestroy {
     private modalService: NgbModal,
     private toastrService: ToastrService,
     private fb: FormBuilder
-  ) { }
+  ) {
+    titulo.setTitle('Requisições - RequisiçõesApp') ;
+  }
 
   ngOnInit(): void {
 

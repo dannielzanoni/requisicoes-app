@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { Departamento } from './models/departamento.model';
@@ -14,10 +15,13 @@ export class DepartamentoComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
+    titulo: Title,
     private departamentoService: DepartamentoService,
     private modalService: NgbModal,
     private fb: FormBuilder
-    ) {   }
+    ) {
+      titulo.setTitle('Departamentos - RequisiçõesApp');
+    }
 
   ngOnInit(): void {
     this.departamentos$ = this.departamentoService.selecionarTodos();

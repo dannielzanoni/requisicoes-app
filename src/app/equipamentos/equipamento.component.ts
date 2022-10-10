@@ -1,6 +1,7 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 import { ToastrService } from 'ngx-toastr';
@@ -18,11 +19,14 @@ export class EquipamentoComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
+    titulo: Title,
     private fb: FormBuilder,
     private modalService: NgbModal,
     private equipamentoService: EquipamentoService,
     private toastrService: ToastrService
-  ) { }
+  ) {
+    titulo.setTitle('Equipamentos - RequisiçõesApp');
+   }
 
   ngOnInit(): void {
     this.form = this.fb.group({

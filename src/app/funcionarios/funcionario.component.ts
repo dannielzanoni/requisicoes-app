@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
@@ -20,6 +21,7 @@ export class FuncionarioComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
+    titulo: Title,
     private router: Router,
     private authService: AuthenticationService,
     private funcionarioService: FuncionarioService,
@@ -27,7 +29,9 @@ export class FuncionarioComponent implements OnInit {
     private toastrService: ToastrService,
     private modalService: NgbModal,
     private fb: FormBuilder
-    ) { }
+    ) {
+     titulo.setTitle('Funcionários - RequisiçõesApp') ;
+     }
 
   ngOnInit(): void {
     this.form = this.fb.group({

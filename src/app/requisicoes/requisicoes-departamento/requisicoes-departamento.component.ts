@@ -1,6 +1,7 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, AbstractControl, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subscription } from 'rxjs';
@@ -31,6 +32,7 @@ export class RequisicoesDepartamentoComponent implements OnInit {
   public form: FormGroup;
 
   constructor(
+    titulo: Title,
     private authService: AuthenticationService,
     private requisicaoService: RequisicaoService,
     private equipamentoService: EquipamentoService,
@@ -39,7 +41,9 @@ export class RequisicoesDepartamentoComponent implements OnInit {
     private modalService: NgbModal,
     private toastrService: ToastrService,
     private fb: FormBuilder
-  ) { }
+  ) {
+    titulo.setTitle('Requisições - RequisiçõesApp') ;
+   }
 
   ngOnInit(): void {
     this.form = this.fb.group({
