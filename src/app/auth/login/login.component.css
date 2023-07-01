@@ -1,0 +1,41 @@
+.form-control[type="password"] {
+    margin-top: -10%;
+}
+
+.text-primary:hover {
+    text-decoration: none;
+}
+
+.popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(134, 48, 48);
+    height: 1.8rem;
+    width: auto;
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    color: white;
+    animation: slide-up 0.2s ease-out forwards;
+}
+
+
+@keyframes slide-up {
+    0% {
+        top:38.8%;
+    }
+
+    100% {
+        top: calc(30% + 100px);
+    }
+} 
+
+.hidden {
+    display: none;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
